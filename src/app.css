@@ -4,3 +4,14 @@
     flex-direction: column;
     align-items: center;
 }
+
+.app > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    width: 30px;
+    margin:0 10px;
+}

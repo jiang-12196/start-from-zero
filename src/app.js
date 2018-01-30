@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import FirstComponent from './container/FirstComponent';
+import Counter from './container/Counter';
+import store from './reducer';
 import s from './app.css';
 
-console.log(s)
 
 class App extends Component {
+	
 	render() {
 		return (
 			<div className={'app'}>
 				<h2>welcome to my Website</h2>
-				<FirstComponent />
+				<Counter 
+					value={store.getState()}
+					onIncrement={() => store.dispatch({ type: 'INCREMENT'})}
+					onDecrement={() => store.dispatch({ type: 'DECREMENT'})}
+				/>
 			</div>
 		);
 	}
 }
 
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const render = () => ReactDOM.render(<App />, document.getElementById('app'));
+
+render();
+
+store.subscribe(render);
+
