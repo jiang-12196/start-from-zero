@@ -1,4 +1,5 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const path = require('path');
 
 module.exports = {
     entry: './src/app.js',
@@ -11,10 +12,21 @@ module.exports = {
             {
                 test: /\.js?$/,
                 loader: "babel-loader",
+                include: [
+                    path.resolve(__dirname, 'node_modules/plume2'),
+                ],
                 exclude: [/node_modules/, /public/],
                 query: {
                     presets: ['es2015','react']
                   },
+            },      
+            {
+                test: /\.js/,
+                include: [
+                path.resolve(__dirname, './src'),
+                path.resolve(__dirname, './node_modules/plume2/dist')
+                ],
+                loader: 'babel-loader?cacheDirectory'
             },
             {
                 test: /\.css$/,
