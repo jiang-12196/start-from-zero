@@ -10,24 +10,11 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
-                loader: "babel-loader",
+                test: /\.js/, 
                 include: [
                     path.resolve(__dirname, 'node_modules/plume2'),
                 ],
-                exclude: [/node_modules/, /public/],
-                query: {
-                    presets: ['es2015','react']
-                  },
-            },      
-            {
-                test: /\.js/,
-                include: [
-                path.resolve(__dirname, './src'),
-                path.resolve(__dirname, './node_modules/plume2/dist')
-                ],
-                loader: 'babel-loader?cacheDirectory'
-            },
+                loader: 'babel-loader?cacheDirectory' },
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"
